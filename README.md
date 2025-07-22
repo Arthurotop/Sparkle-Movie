@@ -1,6 +1,6 @@
-# 🎬 Sparkle Movie — Système de Recommandation de Films
+# Sparkle Movie — Système de Recommandation de Films
 
-## 1. 📌 Contexte du projet
+## 1. Contexte du projet
 
 L'objectif du projet **Sparkle Movie** est de concevoir et évaluer plusieurs systèmes de recommandation de films à l'aide du framework **Apache Spark**, en exploitant le dataset **MovieLens**.  
 La volumétrie des données et les enjeux de parallélisation ont motivé le choix de Spark, notamment pour le traitement distribué et les algorithmes collaboratifs.
@@ -12,7 +12,7 @@ Le projet explore et compare trois approches de recommandation :
 
 ---
 
-## 2. 📊 Données et leur analyse
+## 2. Données et leur analyse
 
 Le jeu de données MovieLens utilisé contient :
 - `ratings.csv` : des millions de notes attribuées par les utilisateurs aux films,
@@ -29,9 +29,9 @@ Les données ont été nettoyées puis divisées en ensembles d'entraînement et
 
 ---
 
-## 3. 🧠 Algorithmes utilisés
+## 3. Algorithmes utilisés
 
-### 🔁 ALS — Filtrage collaboratif
+### ALS — Filtrage collaboratif
 
 Le modèle ALS a été entraîné sur les données d'entraînement avec **optimisation d’hyperparamètres via CrossValidator** (grid search).  
 Évaluation avec :
@@ -40,30 +40,30 @@ Le modèle ALS a été entraîné sur les données d'entraînement avec **optimi
 
 Le modèle final a été sauvegardé et utilisé pour la suite du projet.
 
-### 👥 KNN — Similarité utilisateur
+### KNN — Similarité utilisateur
 
 Basé sur les **facteurs latents utilisateurs** extraits du modèle ALS, un système **User-User KNN** a été mis en place avec :
 - **Similarité cosinus** pour mesurer la proximité,
 - **Locality Sensitive Hashing (LSH)** pour accélérer la recherche de voisins en haute dimension.
 
-### 🎭 Recommandation basée sur le contenu
+### Recommandation basée sur le contenu
 
 Une approche plus simple, mais efficace, basée sur la **similarité des genres des films**.  
 Pour un film aimé par un utilisateur, le système recommande d’autres films partageant des genres similaires.
 
 ---
 
-## 4. ✅ Conclusion
+## 4. Conclusion
 
 L’évaluation des trois systèmes a révélé les performances suivantes :
 
 | Modèle                        | Précision@5 | Rappel@5 |
 |------------------------------|-------------|-----------|
-| 🎭 Contenu (Genres)          | **0.0667**  | **0.0067** |
-| 🔁 ALS (Collaboratif)        | 0.0005      | 0.0001     |
-| 👥 KNN (facteurs ALS)        | 0.0010      | 0.0005     |
+| Contenu (Genres)          | **0.0667**  | **0.0067** |
+| ALS (Collaboratif)        | 0.0005      | 0.0001     |
+| KNN (facteurs ALS)        | 0.0010      | 0.0005     |
 
-### 🧩 Conclusion principale
+### Conclusion principale
 
 Le modèle basé sur le **contenu** a surclassé les approches collaboratives, notamment en raison de la **sparsité** du dataset : les utilisateurs similaires n’avaient souvent pas noté les mêmes films, ce qui rendait les recommandations difficiles.
 
